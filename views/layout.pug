@@ -2,21 +2,37 @@ doctype html
 html
     head
         meta(
-            name='placeholder' 
+            name='placeholder',
             content='This is my HTML boilerplate'
         )
         meta( charset='utf-8' )
         meta( 
             name='viewport',
             content='width=device-width, initial-scale=1, maximum-scale=1'
+        )
+        link(
+            href='https://fonts.googleapis.com/css?family=Hind+Siliguri:300,400,500,600,700&display=swap',
+            rel='stylesheet'
+        )
+        link(
+            rel='stylesheet',
+            href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
+            integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T',
+            crossorigin='anonymous'
         )    
         link(
             rel='stylesheet',
             href='css/style.css',
-            media='screen',
+            media='screen'
         )
         title This is a page title
     body
-        block content
+        main
+            block content
+        script(
+            src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
+            integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM',
+            crossorigin='anonymous'
+        )
         script( src='js/javascript.js' )
 

@@ -1,4 +1,17 @@
 extends layout
 
 block content
-    h1 test
+    include partials/header.pug
+    div(
+        class='page-header header-filter header-bkgrd',
+        data-parallax='true'
+    )
+        div(class='container')
+            div(class='row')
+                div(class='col-md-8 ml-auto mr-auto')
+                    div(class='brand-heading text-center')
+                        h1 Get Messy
+                        h3(class='title') Start Smashing
+
+
+//- include partials/footer.pug
