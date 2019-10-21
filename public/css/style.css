@@ -64,3 +64,14 @@ h1 {
     margin-bottom: 10px;
     font-weight:300
 }
+
+/* Results section styling */
+
+.sidebar {
+    width: 14rem !important;
+    min-height: 100vh;
+}
+
+.dash-bkgrd {
+    background: blue;
+}

@@ -12,10 +12,8 @@ app.set('view engine', 'pug');
 //Setup Express
 app.use(express.static('public'));
 
-//Home route
-app.get('/', function(req, res) {
-    res.render('index')
-})
+//Setup Production routes 
+app.use('/', require('./routes/prodRoutes'));
 
 //Start server
 app.listen(3000, function() {

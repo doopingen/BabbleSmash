@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    div(class='container-fluid')
+        div(class="row flex-xl-nowrap")
+            div(class='col-12 col-md-3 col-xl-2')
+                nav(class='nav flex-column')
+                    a(class='nav-link active') Active Link
+                    a(class='nav-link') Link
+                    a(class='nav-link') Link
+            div(class='col-12 col-md-9 col-xl-10 py-md-3')
+                div(class='row mb-3')
+                    div(class='col-md-3 themed-grid-col') Whitespace
+                    div(class='col-md-6') Search Bar
+                    div(class='col-md-3') Whitespace
+                div(class='row mb-3')
+                    h3(class='text-left') Results
+                        br
+                        small(class='text-muted') For this URL http://www.test.com
+                div(class='row mb-3')
+                    div(class='col-md-4 themed-grid-col') Reaction1
+                    div(class='col-md-4') Reaction2
+                    div(class='col-md-4') Sentiment
+
+                
