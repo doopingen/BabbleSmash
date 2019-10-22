@@ -118,10 +118,16 @@ block content
                             div(class='card-body')
                                 div(class='card-title') This is a title
                                 p(class='card-text') This is some explanation text
+                            - var x = 0;
                             ul(class='list-group list-group-flush')
-                                li(class='list-group-item') This is one point about the results
-                                li(class='list-group-item') This is a second point about the results
-                                li(class='list-group-item') This is a third point about the results
+                                while x < 5
+                                    li(class='list-group-item')= urlData.entities[x].name
+                                    - x++
+
+                                //- each entity in urlData.entities
+                                //-     li(class='list-group-item')= entity
+
+                                //- li(class='list-group-item') This is a third point about the results
                 div(class='row mb-3')
                     div(class='card-deck')
                         div(class='card')
@@ -134,9 +140,9 @@ block content
                                 p(class='card-text') This card is a place holder. Don't touch
                         div(class='card')
                             div(class='card-body')
-                                div(class='card-title') #{howdy}
+                                div(class='card-title')
                                 p(class='card-text') This card is a place holder. Don't touch
     script. 
-        var howdy = 'This is a test';
+        var entity = !{JSON.stringify(urlData.entities)};
         var topics = !{JSON.stringify(urlData.topics)};
    
