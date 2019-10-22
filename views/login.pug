@@ -3,11 +3,13 @@ extends layout
 block content
     div(class='container-expand text-center')
         form(class='form-signin')
-            h1(class='h3 mb-3 font-weight-normal') Please sign in
-            label(for='inputEmail', class='sr-only') Email Address
-            input(type="email" id="inputEmail" class="form-control mb-3" placeholder="Email address" required="" autofocus="")
-            label(for="inputPassword" class="sr-only") Password
-            input(type="password" id="inputPassword" class="form-control mb-3" placeholder="Password" required="")
+            div(class='form-group')
+                h1(class='h3 mb-3 font-weight-normal') Please sign in
+                label(for="authEmail", class='sr-only') Email Address
+                input(type="email" name='email' id="authEmail" class="form-control mb-3" placeholder="Email address" required="" autofocus="")
+            div(class='form-group')
+                label(for="authPassword" class="sr-only") Password
+                input(type="password" name="password" id="authPassword" class="form-control mb-3" placeholder="Password" required="")
             button(class="btn btn-lg btn-primary btn-block" type="submit") Sign in
 
 

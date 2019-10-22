@@ -23,7 +23,6 @@ router.get('/results', function(req, res) {
     var article = fs.readFileSync('./glass.json');
     var articleData = JSON.parse(article);
     res.render('results', { urlData: articleData });
-
 })
 
 module.exports = router;
