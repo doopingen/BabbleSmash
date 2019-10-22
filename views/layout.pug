@@ -45,4 +45,16 @@ html
             src='https://kit.fontawesome.com/1ef47d03cd.js',
             crossorigin="anonymous"
         )
+        script. 
+            var currentUser = !{JSON.stringify(currentUser)};
+            if (alerts.error) {
+                alerts.error.forEach(function(msg) {
+                    <div class="alert alert-danger"> Danger </div>
+                });
+            }
+            if (alerts.success) {
+                alerts.success.forEach(function(msg) {
+                    <div class="alert alert-success"> Success </div>
+                });
+            }
 
