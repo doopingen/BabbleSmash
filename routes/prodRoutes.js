@@ -14,7 +14,7 @@ router.get('/login', function(req, res) {
 });
 
 //User Profile route
-router.get('/profile', function(req, res) {
+router.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile')
 });
 

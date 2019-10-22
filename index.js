@@ -28,10 +28,57 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 
+//Rate limiters for login and signup
+const loginLimiter = new RateLimit({
+    windowMs: 1000 * 60 * 5,
+    max: 3,
+    message: 'Maximum login attempts exceeded. Please try again later.'
+});
+
+const signupLimiter = new RateLimit({
+    windowMs: 1000 * 60 * 5,
+    max: 3,
+    delayMs: 0,
+    message: 'Maximum login attempts exceeded. Please try again later.'
+});
+
+const sessionStore = new SequelizeStore({
+    db: db.sequelize,
+    expiration: 1000 * 60 * 30
+});
+
+//Session must come before flash and passport
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStore
+}));
+
+//Use this line once to setup the store table
+sessionStore.sync();
+
+//Most come after session abd before passport middleware
+app.use(flash());
+
+// This must come after we setup the session
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function(req, res, next) {
+    //before every route, attach the flas messages and current user to res.locals
+    res.locals.alerts = req.flash();
+    res.locals.currentUser = req.user;
+    next();
+})
+
 //Setup Production routes 
 app.use('/', require('./routes/prodRoutes'));
 
+//Setup Auth Controller
+app.use('/auth', require('./controllers/auth'));
+
 //Start server
-app.listen(3000, function() {
-    console.log('Server hot to trot on 3000 buddy')
-})
+var server = app.listen(process.env.PORT || 3000);
+
+module.exports = server;
