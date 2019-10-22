@@ -3,11 +3,9 @@ const express = require('express');
 const path = require('path');
 
 //Initialize Authentication
-const ejsLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 const passport = require('./config/ppConfig');
 const flash = require('connect-flash');
-const isLoggedIn = require('./middleware/isLoggedIn');
 const helmet = require('helmet');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const RateLimit = require('express-rate-limit');

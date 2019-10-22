@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const isLoggedIn = require('./middleware/isLoggedIn');
 
 //Home route
 router.get('/', function(req, res) {
