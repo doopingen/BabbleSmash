@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   keyword.associate = function(models) {
     // associations can be defined here
+    models.keyword.belongsTo(models.article);
   };
   return keyword;
 };

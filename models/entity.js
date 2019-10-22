@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   entity.associate = function(models) {
     // associations can be defined here
+    models.entity.belongsTo(models.article);
   };
   return entity;
 };
