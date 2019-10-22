@@ -23,50 +23,59 @@ block content
                     small(class='text-muted' style='font-size: 80%') For this URL:&nbsp; 
                     a(class='text-muted' style='font-size: 80%' href='#{urlData.url}') #{urlData.url}
                 div(class='row mb-3')
-                    div(class='col-md-2')
+                    div(class='col-md-4')
                         if urlData.reactions[0].reaction === 'ahah'
                             div(class='card text-white bg-warning mb-3')
-                                div(class='card-body' style='display:inline-block')
+                                div(class='card-body')
                                     i(class='iconsize far fa-laugh')
-                                    h5(class="card-title") Light Hearted
+                                    h5(class='card-title float-right') Good vibes detected
                         else if urlData.reactions[0].reaction === 'wow'
                             div(class='card bg-primary text-white mb-3')
                                 div(class='card-body')
-                                    <i class="iconsize far fa-surprise"></i>
+                                    i(class='iconsize far fa-surprise')
+                                    h5(class='card-title float-right') Sensational!
                         else if urlData.reactions[0].reaction === 'angry'
                             div(class='card bg-warning text-dark mb-3')
                                 div(class='card-body')
-                                    <i class="iconsize far fa-angry"></i>
+                                    i(class='iconsize far fa-angry')
+                                    h5(class='card-title float-right') Bad vibes detected
                         else if urlData.reactions[0].reaction === 'sad'
                             div(class='card bg-info text-white mb-3')
                                 div(class='card-body')
-                                    <i class="iconsize far fa-sad-cry"></i>
+                                    i(class='iconsize far fa-sad-cry')
+                                    h5(class='card-title float-right') Heavy hearted, Tear jerker
                         else 
                             div(class='card bg-danger text-white mb-3')
                                 div(class='card-body')
-                                    <i class="iconsize fas fa-grin-hearts"></i>
-                    div(class='col-md-2')
+                                    i(class='iconsize fas fa-grin-hearts')
+                                    h5(class='card-title float-right') Quality
+                    div(class='col-md-4')
                         if urlData.reactions[1].reaction === 'ahah'
                             div(class='card text-white bg-warning mb-3')
                                 div(class='card-body')
-                                    <i class="iconsize far fa-laugh"></i>
+                                    i(class='iconsize far fa-laugh')
+                                    h5(class='card-title float-right') Good vibes detected
                         else if urlData.reactions[1].reaction === 'wow'
                             div(class='card bg-primary text-white mb-3')
                                 div(class='card-body')
-                                    <i class="iconsize far fa-surprise"></i>
+                                    i(class='iconsize far fa-surprise')
+                                    h5(class='card-title float-right') Sensational!
                         else if urlData.reactions[1].reaction === 'angry'
                             div(class='card bg-warning text-dark mb-3')
                                 div(class='card-body')
-                                    <i class="iconsize far fa-angry"></i>
+                                    i(class='iconsize far fa-angry')
+                                    h5(class='card-title float-right') Bad vibes detected
                         else if urlData.reactions[1].reaction === 'sad'
                             div(class='card bg-info text-white mb-3')
                                 div(class='card-body')
-                                    <i class="iconsize far fa-sad-cry"></i>
+                                    i(class='iconsize far fa-sad-cry')
+                                    h5(class='card-title float-right') Heavy hearted, Tear jerker
                         else 
                             div(class='card bg-danger text-white mb-3')
                                 div(class='card-body')
-                                    <i class="iconsize fas fa-grin-hearts"></i>
-                    div(class='col-md-2')
+                                    i(class='iconsize fas fa-grin-hearts')
+                                    h5(class='card-title float-right') Quality
+                    div(class='col-md-4')
                         if urlData.sentiment === 'positive'
                             div(class='card bg-success text-dark mb-3')
                                 div(class='card-body')
@@ -77,34 +86,32 @@ block content
                                     h5(class='card-title') Sentiment: Negative
                         else 
                             div(class='card bg-secondary text-white mb-3')
-                                div(class='card-body')
+                                div(class='card-body text-center')
                                     h5(class='card-title') Sentiment: Neutral
                 div(class='row mb-3')
                     div(class='col-md-8')
                         div(class='card')
-                            div(class='card-header') Header 1
+                            div(class='card-header') Summary
                             div(class='card-body')
-                                h5(class='card-title') This is a test
+                                h5(class='card-title') #{urlData.summary}
                     div(class='col-md-4')
                         div(class='card')
-                            div(class='card-header') Header 2
+                            div(class='card-header') Topic Score
                             div(class='card-body')
-                                h5(class='card-title') This is a test
+                                canvas(id='doughnutChart' width='200' height='200')
                 div(class='row mb-3')
                     div(class='col-md-6')
                         div(class='card')
                             div(class='card-header') Section 1
                             div(class='card-body')
-                                small(class='text-muted') Tag1
-                                div(class='progress')
-                                    div(
-                                        class='progress-bar',
-                                        role='progressbar',
-                                        style='width: 25%',
-                                        aria-valuenow='0',
-                                        aria-valuemin='0',
-                                        aria-valuemax='100'
-                                    ) 25%
+                                each entity in urlData.entities
+                                    if entity.score < 0.5
+                                         - break
+                                    small(class='text-muted')= entity.name
+                                        div(class='progress')
+                                            div(
+                                                class='progress-bar',role='progressbar',style='width:' + entity.score * 100 + '%',aria-valuenow='0',aria-valuemin='0',aria-valuemax='100'
+                                            )= entity.score * 100
                     div(class='col-md-6')
                         div(class='card')
                             div(class='card-header') Section 2
@@ -127,8 +134,9 @@ block content
                                 p(class='card-text') This card is a place holder. Don't touch
                         div(class='card')
                             div(class='card-body')
-                                div(class='card-title') Wiki article 3
+                                div(class='card-title') #{howdy}
                                 p(class='card-text') This card is a place holder. Don't touch
-
-
-                
+    script. 
+        var howdy = 'This is a test';
+        var topics = !{JSON.stringify(urlData.topics)};
+   
