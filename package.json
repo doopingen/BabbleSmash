@@ -4,6 +4,10 @@
   "description": "Site project for unit2. Proof of concept for URL consumption site",
   "main": "index.js",
   "dependencies": {
+    "bcrypt": "^3.0.6",
+    "connect-flash": "^0.1.1",
+    "connect-session-sequelize": "^6.0.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^7.12.1",
     "pug": "^2.0.4",
