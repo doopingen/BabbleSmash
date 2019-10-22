@@ -5,25 +5,80 @@ block content
         div(class="row flex-xl-nowrap")
             div(class='col-12 col-md-3 col-xl-2')
                 nav(class='nav flex-column')
-                    a(class='nav-link active') Active Link
+                - var brand = 'BabbleSmash'
+                    a(class='nav-link active') #{brand}
                     a(class='nav-link') Link
                     a(class='nav-link') Link
             div(class='col-12 col-md-9 col-xl-10 py-md-3')
                 div(class='row mb-3')
                     div(class='col-md-3 themed-grid-col') Whitespace
                     div(class='col-md-6') Search Bar
-                    div(class='col-md-3') Whitespace
+                    div(class='col-md-3') Whitespace 
                 div(class='row')
                     div(class='col-md-6') 
                         h3(class='text-left') Results
                     div(class='col-md-4') 
                         button(class='btn btn-dark float-right', type='button') Save
                 div(class='row mb-3')
-                    small(class='text-muted') For this URL http://www.test.com
+                    small(class='text-muted' style='font-size: 80%') For this URL:&nbsp; 
+                    a(class='text-muted' style='font-size: 80%' href='#{urlData.url}') #{urlData.url}
                 div(class='row mb-3')
-                    div(class='col-md-4 themed-grid-col') Reaction1
-                    div(class='col-md-4') Reaction2
-                    div(class='col-md-4') Sentiment
+                    div(class='col-md-2')
+                        if urlData.reactions[0].reaction === 'ahah'
+                            div(class='card text-white bg-warning mb-3')
+                                div(class='card-body' style='display:inline-block')
+                                    i(class='iconsize far fa-laugh')
+                                    h5(class="card-title") Light Hearted
+                        else if urlData.reactions[0].reaction === 'wow'
+                            div(class='card bg-primary text-white mb-3')
+                                div(class='card-body')
+                                    <i class="iconsize far fa-surprise"></i>
+                        else if urlData.reactions[0].reaction === 'angry'
+                            div(class='card bg-warning text-dark mb-3')
+                                div(class='card-body')
+                                    <i class="iconsize far fa-angry"></i>
+                        else if urlData.reactions[0].reaction === 'sad'
+                            div(class='card bg-info text-white mb-3')
+                                div(class='card-body')
+                                    <i class="iconsize far fa-sad-cry"></i>
+                        else 
+                            div(class='card bg-danger text-white mb-3')
+                                div(class='card-body')
+                                    <i class="iconsize fas fa-grin-hearts"></i>
+                    div(class='col-md-2')
+                        if urlData.reactions[1].reaction === 'ahah'
+                            div(class='card text-white bg-warning mb-3')
+                                div(class='card-body')
+                                    <i class="iconsize far fa-laugh"></i>
+                        else if urlData.reactions[1].reaction === 'wow'
+                            div(class='card bg-primary text-white mb-3')
+                                div(class='card-body')
+                                    <i class="iconsize far fa-surprise"></i>
+                        else if urlData.reactions[1].reaction === 'angry'
+                            div(class='card bg-warning text-dark mb-3')
+                                div(class='card-body')
+                                    <i class="iconsize far fa-angry"></i>
+                        else if urlData.reactions[1].reaction === 'sad'
+                            div(class='card bg-info text-white mb-3')
+                                div(class='card-body')
+                                    <i class="iconsize far fa-sad-cry"></i>
+                        else 
+                            div(class='card bg-danger text-white mb-3')
+                                div(class='card-body')
+                                    <i class="iconsize fas fa-grin-hearts"></i>
+                    div(class='col-md-2')
+                        if urlData.sentiment === 'positive'
+                            div(class='card bg-success text-dark mb-3')
+                                div(class='card-body')
+                                    h5(class='card-title') Sentiment: Positive
+                        else if urlData.sentiment === 'negative'
+                            div(class='card bg-danger text-white mb-3')
+                                div(class='card-body')
+                                    h5(class='card-title') Sentiment: Negative
+                        else 
+                            div(class='card bg-secondary text-white mb-3')
+                                div(class='card-body')
+                                    h5(class='card-title') Sentiment: Neutral
                 div(class='row mb-3')
                     div(class='col-md-8')
                         div(class='card')
