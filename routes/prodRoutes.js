@@ -9,10 +9,10 @@ router.get('/', function(req, res) {
     res.render('index')
 });
 
-//User Login route
-router.get('/login', function(req, res) {
-    res.render('login')
-});
+// //User Login route
+// router.get('/login', function(req, res) {
+//     res.render('login')
+// });
 
 //User Profile route
 router.get('/profile', isLoggedIn, function(req, res) {
