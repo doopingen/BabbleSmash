@@ -1,15 +1,10 @@
 extends layout
 
 block content
-    div(class='container-fluid')
+    include partials/usrheader.pug
+    div(class='container')
         div(class="row flex-xl-nowrap")
-            div(class='col-12 col-md-3 col-xl-2')
-                nav(class='nav flex-column')
-                - var brand = 'BabbleSmash'
-                    a(class='nav-link active') #{brand}
-                    a(class='nav-link') Link
-                    a(class='nav-link') Link
-            div(class='col-12 col-md-9 col-xl-10 py-md-3')
+            div(class='col-xl-12 col-md-9 py-md-3')
                 div(class='row mb-3')
                     div(class='col-md-3 themed-grid-col') Whitespace
                     div(class='col-md-6') Search Bar
