@@ -2,12 +2,12 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const isLoggedIn = require('./middleware/isLoggedIn');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
-//Home route
-router.get('/', function(req, res) {
-    res.render('index')
-});
+// //Home route
+// router.get('/', function(req, res) {
+//     res.render('index')
+// });
 
 // //User Login route
 // router.get('/login', function(req, res) {

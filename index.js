@@ -1,4 +1,5 @@
 //Initialize Express
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 
@@ -70,11 +71,8 @@ app.use(function(req, res, next) {
     next();
 })
 
-//Setup Production routes 
-app.use('/', require('./routes/prodRoutes'));
-
-//Setup Auth Controller
-app.use('/auth', require('./controllers/auth'));
+// //Setup Production routes 
+app.use('/', require('./controllers/main'));
 
 //Start server
 var server = app.listen(process.env.PORT || 3000);

@@ -57,7 +57,7 @@ block content
                     button(type="button" class="close" data-dismiss="modal" aria-label="Close")
                         span(aria-hidden="true")
                 div(class="modal-body")
-                    form(action="/auth/signup" method="POST")
+                    form(action="/signup" method="POST")
                         div(class="form-group")
                             label(for="authEmail") Email
                             input(id="authEmail" class="form-control" type="email" name="email")
@@ -67,7 +67,7 @@ block content
                         div(class="form-group")
                             label(for="authPassword") Password
                             input(id="authPassword" class="form-control" type="password" name="password")
+                            button(type="submit" class="btn btn-primary") Submit
                 div(class="modal-footer")
                     button(type="button" class="btn btn-secondary" data-dismiss="modal") Close
-                    button(type="submit" class="btn btn-primary") Submit
 //- include partials/footer.pug
