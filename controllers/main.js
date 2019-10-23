@@ -4,6 +4,12 @@ const db = require('../models');
 const passport = require('../config/ppConfig');
 const isLoggedIn = require('../middleware/isLoggedIn');
 const axios = require('axios');
+const qs = require('querystring')
+
+const YONDER_URL = 'https://api.yonderlabs.com/1.0/text/allsingletext/fromURL?access_token=';
+const testUrl = 'url=https%3A%2F%2Fnewrepublic.com%2Farticle%2F155292%2Fbetsy-devos-cost-trump-election'
+const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
+
 
 //GET - Root route
 router.get('/', function(req, res) {
@@ -20,6 +26,19 @@ router.get('/logout', function(req, res) {
   req.logout();
   req.flash('success', 'You have logged out!');
   res.redirect('/');
+});
+
+router.post('/results', function(req, res) {
+  var requestBody = {
+    url: req.body.url,
+  };
+  axios.post(YONDER_URL + process.env.YONDER_API,
+    qs.stringify(requestBody) , config).then(function(response) {
+    res.render('results', { urlData: response.data })
+  }).catch(function(err) {
+    console.log(err);
+    res.redirect('profile');
+  });
 });
 
 router.get('/profile', isLoggedIn, function(req, res) {

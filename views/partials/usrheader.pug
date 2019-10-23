@@ -12,7 +12,7 @@ header
                         a(class="nav-link" href="#") Link
                     li(class="nav-item")
                         a(class="nav-link" href="#") Link
-            form(class="form-inline my-2 my-lg-0")
-                input(class="form-control mr-sm-2" type="search" placeholder="Smash New URL" aria-label="Search")
+            form(action="/results" method="POST" class="form-inline my-2 my-lg-0")
+                input(type="url" name='url' id="usrURL" class="form-control mr-sm-2" placeholder="Smash New URL" aria-label="Search")
                 button(class="btn btn-outline-success my-2 my-sm-0" type="submit") Smash
 
