@@ -28,22 +28,34 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+//POST - Logout route
 router.post('/results', function(req, res) {
   var requestBody = {
     url: req.body.url,
   };
   axios.post(YONDER_URL + process.env.YONDER_API,
-    qs.stringify(requestBody) , config).then(function(response) {
-    res.render('results', { urlData: response.data })
+    qs.stringify(requestBody), config).then(function(response) {
+      res.render('results', { urlData: response.data })
   }).catch(function(err) {
     console.log(err);
     res.redirect('profile');
   });
 });
 
+//GET - Profile page
 router.get('/profile', isLoggedIn, function(req, res) {
-    res.render('profile');
+  db.user.findByPk(req.user.id)
+  .then(function(user) {
+    user.getArticles().then(function(articles) {
+      res.render('profile', {
+        articles : articles,
+        user: req.user
+      })
+    })
+  })
 });
+
+//POST - 
 
 //POST - Login route
 router.post('/login', passport.authenticate('local', {

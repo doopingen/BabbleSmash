@@ -13,63 +13,92 @@ block content
                     div(class='col-md-6') 
                         h3(class='text-left') Results
                     div(class='col-md-4') 
-                        button(class='btn btn-dark float-right', type='button') Save
+                        form(action="/login" method="POST")
+                            input(type="hidden" name='email' id="authEmail")
+                            button(class='btn btn-dark float-right', type='submit') Save
                 div(class='row mb-3')
                     small(class='text-muted' style='font-size: 80%') For this URL:&nbsp; 
                     a(class='text-muted' style='font-size: 80%' href='#{urlData.url}') #{urlData.url}
                 div(class='row mb-3')
                     div(class='col-md-4')
-                        if urlData.reactions[0].reaction === 'ahah'
-                            div(class='card text-white bg-warning mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize far fa-laugh')
-                                    h5(class='card-title float-right') Good vibes detected
-                        else if urlData.reactions[0].reaction === 'wow'
-                            div(class='card bg-primary text-white mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize far fa-surprise')
-                                    h5(class='card-title float-right') Sensational!
-                        else if urlData.reactions[0].reaction === 'angry'
-                            div(class='card bg-warning text-dark mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize far fa-angry')
-                                    h5(class='card-title float-right') Bad vibes detected
-                        else if urlData.reactions[0].reaction === 'sad'
-                            div(class='card bg-info text-white mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize far fa-sad-cry')
-                                    h5(class='card-title float-right') Heavy hearted, Tear jerker
-                        else 
-                            div(class='card bg-danger text-white mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize fas fa-grin-hearts')
-                                    h5(class='card-title float-right') Quality
-                    div(class='col-md-4')
-                        if urlData.reactions[1].reaction === 'ahah'
-                            div(class='card text-white bg-warning mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize far fa-laugh')
-                                    h5(class='card-title float-right') Good vibes detected
-                        else if urlData.reactions[1].reaction === 'wow'
-                            div(class='card bg-primary text-white mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize far fa-surprise')
-                                    h5(class='card-title float-right') Sensational!
-                        else if urlData.reactions[1].reaction === 'angry'
-                            div(class='card bg-warning text-dark mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize far fa-angry')
-                                    h5(class='card-title float-right') Bad vibes detected
-                        else if urlData.reactions[1].reaction === 'sad'
-                            div(class='card bg-info text-white mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize far fa-sad-cry')
-                                    h5(class='card-title float-right') Heavy hearted, Tear jerker
-                        else 
-                            div(class='card bg-danger text-white mb-3')
-                                div(class='card-body')
-                                    i(class='iconsize fas fa-grin-hearts')
-                                    h5(class='card-title float-right') Quality
+                        if(urlData.reactions.length === 2)
+                            if urlData.reactions[0].reaction === 'ahah'
+                                div(class='card text-white bg-warning mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-laugh')
+                                        h5(class='card-title float-right') Good vibes detected
+                            else if urlData.reactions[0].reaction === 'wow'
+                                div(class='card bg-primary text-white mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-surprise')
+                                        h5(class='card-title float-right') Sensational!
+                            else if urlData.reactions[0].reaction === 'angry'
+                                div(class='card bg-warning text-dark mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-angry')
+                                        h5(class='card-title float-right') Bad vibes detected
+                            else if urlData.reactions[0].reaction === 'sad'
+                                div(class='card bg-info text-white mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-sad-cry')
+                                        h5(class='card-title float-right') Heavy hearted, Tear jerker
+                            else 
+                                div(class='card bg-danger text-white mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize fas fa-grin-hearts')
+                                        h5(class='card-title float-right') Quality
+                            div(class='col-md-4')
+                            if urlData.reactions[1].reaction === 'ahah'              
+                                div(class='card text-white bg-warning mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-laugh')
+                                        h5(class='card-title float-right') Good vibes detected
+                            else if urlData.reactions[1].reaction === 'wow'
+                                div(class='card bg-primary text-white mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-surprise')
+                                        h5(class='card-title float-right') Sensational!
+                            else if urlData.reactions[1].reaction === 'angry'
+                                div(class='card bg-warning text-dark mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-angry')
+                                        h5(class='card-title float-right') Bad vibes detected
+                            else if urlData.reactions[1].reaction === 'sad'
+                                div(class='card bg-info text-white mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-sad-cry')
+                                        h5(class='card-title float-right') Heavy hearted, Tear jerker
+                            else 
+                                div(class='card bg-danger text-white mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize fas fa-grin-hearts')
+                                        h5(class='card-title float-right') Quality
+                        else
+                            if urlData.reactions[0].reaction === 'ahah'
+                                div(class='card text-white bg-warning mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-laugh')
+                                        h5(class='card-title float-right') Good vibes detected
+                            else if urlData.reactions[0].reaction === 'wow'
+                                div(class='card bg-primary text-white mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-surprise')
+                                        h5(class='card-title float-right') Sensational!
+                            else if urlData.reactions[0].reaction === 'angry'
+                                div(class='card bg-warning text-dark mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-angry')
+                                        h5(class='card-title float-right') Bad vibes detected
+                            else if urlData.reactions[0].reaction === 'sad'
+                                div(class='card bg-info text-white mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize far fa-sad-cry')
+                                        h5(class='card-title float-right') Heavy hearted, Tear jerker
+                            else 
+                                div(class='card bg-danger text-white mb-3')
+                                    div(class='card-body')
+                                        i(class='iconsize fas fa-grin-hearts')
+                                        h5(class='card-title float-right') Quality
                     div(class='col-md-4')
                         if urlData.sentiment === 'positive'
                             div(class='card bg-success text-dark mb-3')
