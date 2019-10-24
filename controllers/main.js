@@ -28,6 +28,20 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+//GET - Edit route
+router.get('/edit', isLoggedIn, function(req, res) {
+  db.user.findByPk(req.user.id).then(function(user) {
+    res.render('useredit', { user })
+  })
+})
+
+//PUT - User Edit
+router.put('edit', function(req, res) {
+  db.user.findByPk(req.user.id).then(function(user) {
+    user.update(req.body)
+  })
+})
+
 //POST - Logout route
 router.post('/results', function(req, res) {
   var requestBody = {

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div(class='container-expand text-center')
+        form(action="/edit" method="POST" class='form-signin')
+            div(class="form-group")
+                h3(class='h3 mb-3 font-weight-normal') Please update your user details
+                label(for="authEmail") Email
+                input(id="authEmail" class="form-control" type="email" value=user.email name="email")
+            div(class="form-group")
+                label(for="authName") Name
+                input(id="authName" class="form-control" type="text" value=user.name name="name")
+            div(class="form-group")
+                label(for="authPassword") Password
+                input(id="authPassword" class="form-control" type="password" name="password")
+                button(type="submit" class="btn btn-primary mt-3") Submit
+
