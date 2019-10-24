@@ -115,7 +115,7 @@ router.post('/signup', function(req, res) {
       //we created it, redirect to profile
       console.log('User successfully created');
       passport.authenticate('local', { 
-        successRedirect: '/',
+        successRedirect: 'profile',
         successFlash: 'You have successfully logged in with new account'
       })(req, res);
     }else {
