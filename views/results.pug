@@ -13,9 +13,23 @@ block content
                     div(class='col-md-6') 
                         h3(class='text-left') Results
                     div(class='col-md-4') 
-                        form(action="/login" method="POST")
-                            input(type="hidden" name='email' id="authEmail")
-                            button(class='btn btn-dark float-right', type='submit') Save
+                        form(action="/save" method="POST")
+                            input(type="hidden" name='text' id="saveresults" value=urlData.sentiment)
+                            input(type="hidden" name='url' id="saveresults" value=urlData.url)
+                            input(type="hidden" name='summary' id="saveresults" value=urlData.summary)
+                            input(type="hidden" name='reaction' id="saveresults" value=urlData.reactions[0].reaction)
+                            input(type="hidden" name='reaction' id="saveresults" value=urlData.reactions[1].reaction)
+                            input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[0].score) 
+                            input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[1].score)
+                            input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[2].score)
+                            input(type="hidden" name='email' id="saveresults" value=urlData.topics[0].category)
+                            input(type="hidden" name='email' id="saveresults" value=urlData.topics[1].category)
+                            input(type="hidden" name='email' id="saveresults" value=urlData.topics[2].category)
+                            input(type="hidden" name='email' id="saveresults" value=urlData.entities[0].score)
+                            input(type="hidden" name='email' id="saveresults" value=urlData.entities[1].score)
+                            input(type="hidden" name='email' id="saveresults" value=urlData.entities[0].name)
+                            input(type="hidden" name='email' id="saveresults" value=urlData.entities[1].name)
+                            button(class='btn btn-dark float-right', type='submit') Save Result
                 div(class='row mb-3')
                     small(class='text-muted' style='font-size: 80%') For this URL:&nbsp; 
                     a(class='text-muted' style='font-size: 80%' href='#{urlData.url}') #{urlData.url}
