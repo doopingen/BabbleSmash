@@ -26,7 +26,7 @@ I did my best to design the experience using a variety of inspiration that I've 
 
 Wireframing was done with careful attention to detail. I had to review and look at several different dashboards and UI panels for inspiration as the information delivered would be very specific and involved. The crown jewel of the site is the results page and I had to make sure that it looked every bit as impressive as the API that supports it
 
-![Results page Wireframe](/img/BabbleSmash_Wireframe.png)
+![Results page Wireframe](BabbleSmash_Wireframe.png)
 
 **API Selection**
 
@@ -38,5 +38,5 @@ Yonder Labs is a company out of Trento, Italy that specializes in providing text
 
 THe database model in use was designed, first hand, for use with the Yonder Labs API and can save all information provided. THe solution will need further development over time to make full use of the database model.
 
-![Database model for BabbleSmash](/img/BabbleSmash_Model.png)
+![Database model for BabbleSmash](BabbleSmash_Model.png)
 
