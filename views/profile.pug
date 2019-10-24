@@ -10,12 +10,9 @@ block content
                 div(class='row mb-3')
                     h5(class='text-left') Enter your URL in the Smash bar above to get your analysis       
                 div(class='row mb-3')
-                    div(class='col-md-3 themed-grid-col') 
+                    div(class='col-md-3') 
                     div(class='col-md-6')
-                        div(class="card")
-                            div(class='card-header') Your Saved Smashes
-                            ul(class='list-group list-group-flush')
-                                li(class='list-group-item')
-                                li(class='list-group-item')
-                                li(class='list-group-item')
+                        ul(class="list-group list-group-flush")
+                            each article in articles
+                                li(class='list-group-item')= article.url
                     div(class='col-md-3') Whitespace 

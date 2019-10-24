@@ -13,22 +13,23 @@ block content
                     div(class='col-md-6') 
                         h3(class='text-left') Results
                     div(class='col-md-4') 
+                        - var test =  urlData.summary.substring(0, 250);
                         form(action="/save" method="POST")
                             input(type="hidden" name='sentiment' id="saveresults" value=urlData.sentiment)
                             input(type="hidden" name='url' id="saveresults" value=urlData.url)
-                            input(type="hidden" name='summary' id="saveresults" value=urlData.summary)
+                            input(type="hidden" name='summary' id="saveresults" value=test)
                             input(type="hidden" name='reaction' id="saveresults" value=urlData.reactions[0].reaction)
-                            input(type="hidden" name='reaction' id="saveresults" value=urlData.reactions[1].reaction)
-                            input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[0].score) 
-                            input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[1].score)
-                            input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[2].score)
-                            input(type="hidden" name='category' id="saveresults" value=urlData.topics[0].category)
-                            input(type="hidden" name='category' id="saveresults" value=urlData.topics[1].category)
-                            input(type="hidden" name='category' id="saveresults" value=urlData.topics[2].category)
-                            input(type="hidden" name='entityscore' id="saveresults" value=urlData.entities[0].score)
-                            input(type="hidden" name='entityscore' id="saveresults" value=urlData.entities[1].score)
-                            input(type="hidden" name='entityname' id="saveresults" value=urlData.entities[0].name)
-                            input(type="hidden" name='entityname' id="saveresults" value=urlData.entities[1].name)
+                            //- input(type="hidden" name='reaction' id="saveresults" value=urlData.reactions[1].reaction)
+                            //- input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[0].score) 
+                            //- input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[1].score)
+                            //- input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[2].score)
+                            //- input(type="hidden" name='category' id="saveresults" value=urlData.topics[0].category)
+                            //- input(type="hidden" name='category' id="saveresults" value=urlData.topics[1].category)
+                            //- input(type="hidden" name='category' id="saveresults" value=urlData.topics[2].category)
+                            //- input(type="hidden" name='entityscore' id="saveresults" value=urlData.entities[0].score)
+                            //- input(type="hidden" name='entityscore' id="saveresults" value=urlData.entities[1].score)
+                            //- input(type="hidden" name='entityname' id="saveresults" value=urlData.entities[0].name)
+                            //- input(type="hidden" name='entityname' id="saveresults" value=urlData.entities[1].name)
                             button(class='btn btn-dark float-right', type='submit') Save Result
                 div(class='row mb-3')
                     small(class='text-muted' style='font-size: 80%') For this URL:&nbsp; 
@@ -156,16 +157,11 @@ block content
                             div(class='card-body')
                                 div(class='card-title') This is a title
                                 p(class='card-text') This is some explanation text
-                            - var x = 0;
                             ul(class='list-group list-group-flush')
-                                while x < 5
-                                    li(class='list-group-item')= urlData.entities[x].name
-                                    - x++
-
-                                //- each entity in urlData.entities
-                                //-     li(class='list-group-item')= entity
-
-                                //- li(class='list-group-item') This is a third point about the results
+                                each entity in urlData.entities
+                                    if entity.score < 0.5
+                                         - break
+                                    li(class='list-group-item')= entity.name
                 div(class='row mb-3')
                     div(class='card-deck')
                         div(class='card')
