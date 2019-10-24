@@ -1,7 +1,8 @@
 extends layout
 
 block content
-    div(class='container-expand text-center')
+    include partials/usrheader.pug
+    div(class='usr container-expand text-center')
         form(action="/edit" method="POST" class='form-signin')
             div(class="form-group")
                 h3(class='h3 mb-3 font-weight-normal') Please update your user details
