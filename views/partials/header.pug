@@ -1,9 +1,9 @@
 header
-    nav(
-        class='navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg'
-        color-on-scroll='100',
-    )
+    nav(class='navbar fixed-top navbar-expand-lg' style='background:#00000070;')
         div(class='container')
-            div(class='navbar-translate')
-                a(href='/') BabbleSmash
-                    a(class="nav-link" href="#") Login
+            div(class='navbar')
+                ul(class='navbar-nav mr-auto')
+                    li(class='nav-item active')
+                        h3(class='mt-1 text-white mr-3' style='font-size:1.5rem' href='/') BabbleSmash
+                    li(class='nav-item')
+                        a(class='nav-link text-white' href='/login') Login
