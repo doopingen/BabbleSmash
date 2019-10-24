@@ -28,6 +28,13 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+//GET - Logout route
+router.get('/logout', function(req, res) {
+  req.logout();
+  req.flash('success', 'You have logged out!');
+  res.redirect('/');
+});
+
 //GET - User edit route
 router.get('/edit', isLoggedIn, function(req, res) {
   db.user.findByPk(req.user.id).then(function(user) {
@@ -36,17 +43,17 @@ router.get('/edit', isLoggedIn, function(req, res) {
 })
 
 //PUT - User update route
-router.put('/edit/:id', function(req, res) {
+router.put('/edit/:id', isLoggedIn, function(req, res) {
   db.user.findByPk(parseInt(req.params.id))
   .then(function(user) {
     user.update(req.body).then(function(updated) {
-      res.redirect('profile')
+      res.redirect('/profile')
     })
   })
 });
 
 //POST - Logout route
-router.post('/results', function(req, res) {
+router.post('/results', isLoggedIn, function(req, res) {
   var requestBody = {
     url: req.body.url,
   };
