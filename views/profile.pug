@@ -17,5 +17,5 @@ block content
                                 p(class='card-text') Sentiment - #{article.text}
                                 p(class='card-text')
                                     small(class='text-muted')= article.summary
-                                form(action=`/profile/` + article.id + `?_method=DELETE` method="POST" class="form-inline my-2 my-lg-0")
+                                form(action='/profile/' + article.id + '?_method=DELETE' method="POST" class="form-inline my-2 my-lg-0")
                                     button(class="btn btn-outline-success my-2 my-sm-0" type="submit") Remove

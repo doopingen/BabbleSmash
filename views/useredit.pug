@@ -3,7 +3,7 @@ extends layout
 block content
     include partials/usrheader.pug
     div(class='usr container-expand text-center')
-        form(action="/edit" method="POST" class='form-signin')
+        form(action='/edit/' + user.id + '?_method=DELETE' method="POST" class='form-signin')
             div(class="form-group")
                 h3(class='h3 mb-3 font-weight-normal') Please update your user details
                 label(for="authEmail") Email
@@ -13,6 +13,6 @@ block content
                 input(id="authName" class="form-control" type="text" value=user.name name="name")
             div(class="form-group")
                 label(for="authPassword") Password
-                input(id="authPassword" class="form-control" type="password" name="password")
+                input(id="authPassword" class="form-control" type="password" value=user.password name="password")
                 button(type="submit" class="btn btn-primary mt-3") Submit
 

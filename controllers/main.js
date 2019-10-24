@@ -28,19 +28,22 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-//GET - Edit route
+//GET - User edit route
 router.get('/edit', isLoggedIn, function(req, res) {
   db.user.findByPk(req.user.id).then(function(user) {
     res.render('useredit', { user })
   })
 })
 
-//PUT - User Edit
-router.put('edit', function(req, res) {
-  db.user.findByPk(req.user.id).then(function(user) {
-    user.update(req.body)
+//PUT - User update route
+router.put('/edit/:id', function(req, res) {
+  db.user.findByPk(parseInt(req.params.id))
+  .then(function(user) {
+    user.update(req.body).then(function(updated) {
+      res.redirect('profile')
+    })
   })
-})
+});
 
 //POST - Logout route
 router.post('/results', function(req, res) {
@@ -69,7 +72,7 @@ router.get('/profile', isLoggedIn, function(req, res) {
   })
 });
 
-//POST - Save Route
+//POST - Save Results Route
 router.post('/save', function(req, res) {
   db.user.findByPk(req.user.id).then(function(user) {
     user.createArticle({
