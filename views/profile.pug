@@ -8,11 +8,14 @@ block content
                 div(class='row mb-3')
                     h3(class='text-left') Hi #{user.name},
                 div(class='row mb-3')
-                    h5(class='text-left') Enter your URL in the Smash bar above to get your analysis       
-                div(class='row mb-3')
-                    div(class='col-md-3') 
-                    div(class='col-md-6')
-                        ul(class="list-group list-group-flush")
-                            each article in articles
-                                li(class='list-group-item')= article.url
-                    div(class='col-md-3') Whitespace 
+                    h5(class='text-left') Enter your URL in the Smash bar above to get your analysis
+                div(class='card-group')
+                    each article in articles
+                        div(class='card' style='min-width:300px')
+                            div(class='card-body')
+                                h6(class='card title')= article.url
+                                p(class='card-text') Sentiment - #{article.text}
+                                p(class='card-text')
+                                    small(class='text-muted')= article.summary
+                                form(action=`/profile/` + article.id + `?_method=DELETE` method="POST" class="form-inline my-2 my-lg-0")
+                                    button(class="btn btn-outline-success my-2 my-sm-0" type="submit") Remove
