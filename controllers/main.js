@@ -109,4 +109,15 @@ router.post('/signup', function(req, res) {
   // catch any errors
 });
 
+// DELETE / - router for pokemon favorites page
+router.delete('/profile/:id', function(req, res) {
+  db.article.destroy({
+    where: {
+        name: req.params.id
+    }
+  }).then(function(){
+    res.redirect('profile')
+  })
+})
+
 module.exports = router;
