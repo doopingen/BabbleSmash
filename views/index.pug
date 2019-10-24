@@ -3,16 +3,14 @@ extends layout
 block content
     include partials/header.pug
     div(
-        class='page-header header-filter header-bkgrd',
-        data-parallax='true'
-    )
+        class='page-header header-filter header-bkgrd' data-parallax='true')
         div(class='container')
             div(class='row')
                 div(class='col-md-8 ml-auto mr-auto')
                     div(class='brand-heading text-center')
                         h1(class='header-title') Get Messy
                         h3(class='header-title') Start Smashing
-                        button(type="button" class="btn btn-primary" data-toggle="modal" data-target="#regModal") Register
+                        button(type='button' class='btn-lg btn-secondary' data-toggle='modal' data-target='#regModal') Register
     div(class='main-section section-raised')
         div(class='section-position')
             div(class='container')
@@ -47,25 +45,25 @@ block content
                         h4(class='description text-left') Oh. You need a little dummy text for your mockup? How quaint.
                         h4(class='description text-left') I bet you’re still using Bootstrap too…
     //------ Modal --------//
-    div(class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
-        div(class="modal-dialog" role="document")
-            div(class="modal-content")
-                div(class="modal-header")
-                    h5(class="modal-title" id="exampleModalLabel") Register Below to get started
-                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
-                        span(aria-hidden="true")
-                div(class="modal-body")
-                    form(action="/signup" method="POST")
-                        div(class="form-group")
-                            label(for="authEmail") Email
-                            input(id="authEmail" class="form-control" type="email" name="email")
-                        div(class="form-group")
-                            label(for="authName") Name
-                            input(id="authName" class="form-control" type="text" name="name")
-                        div(class="form-group")
-                            label(for="authPassword") Password
-                            input(id="authPassword" class="form-control" type="password" name="password")
-                            button(type="submit mt-3" class="btn btn-primary") Submit
-                div(class="modal-footer")
-                    button(type="button" class="btn btn-secondary" data-dismiss="modal") Close
+    div(class='modal fade' id='regModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+        div(class='modal-dialog' role='document')
+            div(class='modal-content')
+                div(class='modal-header')
+                    h5(class='modal-title' id='exampleModalLabel') Register Below to get started
+                    button(type='button' class='close' data-dismiss='modal' aria-label='Close')
+                        span(aria-hidden='true')
+                div(class='modal-body')
+                    form(action='/signup' method='POST')
+                        div(class='form-group')
+                            label(for='authEmail') Email
+                            input(id='authEmail' class='form-control' type='email' name='email')
+                        div(class='form-group')
+                            label(for='authName') Name
+                            input(id='authName' class='form-control' type='text' name='name')
+                        div(class='form-group')
+                            label(for='authPassword') Password
+                            input(id='authPassword' class='form-control' type='password' name='password')
+                            button(type='submit mt-3' class='btn btn-primary') Submit
+                div(class='modal-footer')
+                    button(type='button' class='btn btn-secondary' data-dismiss='modal') Close
 //- include partials/footer.pug

@@ -3,37 +3,33 @@ extends layout
 block content
     include partials/usrheader.pug
     div(class='usr container')
-        div(class="row flex-xl-nowrap")
+        div(class='row flex-xl-nowrap')
             div(class='col-xl-12 col-md-9 py-md-3')
-                div(class='row mb-3')
-                    div(class='col-md-3 themed-grid-col') Whitespace
-                    div(class='col-md-6') Search Bar
-                    div(class='col-md-3') Whitespace 
-                div(class='row')
+                div(class='row mt-5')
                     div(class='col-md-6') 
                         h3(class='text-left') Results
                     div(class='col-md-4') 
                         - var test =  urlData.summary.substring(0, 250);
-                        form(action="/save" method="POST")
-                            input(type="hidden" name='sentiment' id="saveresults" value=urlData.sentiment)
-                            input(type="hidden" name='url' id="saveresults" value=urlData.url)
-                            input(type="hidden" name='summary' id="saveresults" value=test)
-                            input(type="hidden" name='reaction' id="saveresults" value=urlData.reactions[0].reaction)
-                            //- input(type="hidden" name='reaction' id="saveresults" value=urlData.reactions[1].reaction)
-                            //- input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[0].score) 
-                            //- input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[1].score)
-                            //- input(type="hidden" name='topicscore' id="saveresults" value=urlData.topics[2].score)
-                            //- input(type="hidden" name='category' id="saveresults" value=urlData.topics[0].category)
-                            //- input(type="hidden" name='category' id="saveresults" value=urlData.topics[1].category)
-                            //- input(type="hidden" name='category' id="saveresults" value=urlData.topics[2].category)
-                            //- input(type="hidden" name='entityscore' id="saveresults" value=urlData.entities[0].score)
-                            //- input(type="hidden" name='entityscore' id="saveresults" value=urlData.entities[1].score)
-                            //- input(type="hidden" name='entityname' id="saveresults" value=urlData.entities[0].name)
-                            //- input(type="hidden" name='entityname' id="saveresults" value=urlData.entities[1].name)
+                        form(action='/save' method='POST')
+                            input(type='hidden' name='sentiment' id='saveresults' value=urlData.sentiment)
+                            input(type='hidden' name='url' id='saveresults' value=urlData.url)
+                            input(type='hidden' name='summary' id='saveresults' value=test)
+                            input(type='hidden' name='reaction' id='saveresults' value=urlData.reactions[0].reaction)
+                            //- input(type='hidden' name='reaction' id='saveresults' value=urlData.reactions[1].reaction)
+                            //- input(type='hidden' name='topicscore' id='saveresults' value=urlData.topics[0].score) 
+                            //- input(type='hidden' name='topicscore' id='saveresults' value=urlData.topics[1].score)
+                            //- input(type='hidden' name='topicscore' id='saveresults' value=urlData.topics[2].score)
+                            //- input(type='hidden' name='category' id='saveresults' value=urlData.topics[0].category)
+                            //- input(type='hidden' name='category' id='saveresults' value=urlData.topics[1].category)
+                            //- input(type='hidden' name='category' id='saveresults' value=urlData.topics[2].category)
+                            //- input(type='hidden' name='entityscore' id='saveresults' value=urlData.entities[0].score)
+                            //- input(type='hidden' name='entityscore' id='saveresults' value=urlData.entities[1].score)
+                            //- input(type='hidden' name='entityname' id='saveresults' value=urlData.entities[0].name)
+                            //- input(type='hidden' name='entityname' id='saveresults' value=urlData.entities[1].name)
                             button(class='btn btn-dark float-right', type='submit') Save Result
                 div(class='row mb-3')
                     small(class='text-muted' style='font-size: 80%') For this URL:&nbsp; 
-                    a(class='text-muted' style='font-size: 80%' href='#{urlData.url}') #{urlData.url}
+                    a(class='text-muted' style='font-size: 80%' href=urlData.url) #{urlData.url}
                 div(class='row mb-3')
                     div(class='col-md-4')
                         if(urlData.reactions.length === 2)
@@ -141,7 +137,7 @@ block content
                 div(class='row mb-3')
                     div(class='col-md-6')
                         div(class='card')
-                            div(class='card-header') Section 1
+                            div(class='card-header') Article Terminology Analysis Score
                             div(class='card-body')
                                 each entity in urlData.entities
                                     if entity.score < 0.5
@@ -151,31 +147,14 @@ block content
                                             div(
                                                 class='progress-bar',role='progressbar',style='width:' + entity.score * 100 + '%',aria-valuenow='0',aria-valuemin='0',aria-valuemax='100'
                                             )= entity.score * 100
-                    div(class='col-md-6')
+                    div(class='col-md-6 mb-6')
                         div(class='card')
-                            div(class='card-header') Section 2
-                            div(class='card-body')
-                                div(class='card-title') This is a title
-                                p(class='card-text') This is some explanation text
+                            div(class='card-header') Terminology used in article
                             ul(class='list-group list-group-flush')
                                 each entity in urlData.entities
                                     if entity.score < 0.5
                                          - break
                                     li(class='list-group-item')= entity.name
-                div(class='row mb-3')
-                    div(class='card-deck')
-                        div(class='card')
-                            div(class='card-body')
-                                div(class='card-title') Wiki article 1
-                                p(class='card-text') This card is a place holder. Don't touch
-                        div(class='card')
-                            div(class='card-body')
-                                div(class='card-title') Wiki article 2
-                                p(class='card-text') This card is a place holder. Don't touch
-                        div(class='card')
-                            div(class='card-body')
-                                div(class='card-title')
-                                p(class='card-text') This card is a place holder. Don't touch
     script. 
         var entity = !{JSON.stringify(urlData.entities)};
         var topics = !{JSON.stringify(urlData.topics)};

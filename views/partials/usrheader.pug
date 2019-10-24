@@ -1,6 +1,6 @@
 header
     div(class='container-fluid')
-        nav(class='navbar navbar-expand-lg fixed-top navbar-light bg-light')
+        nav(class='navbar navbar-expand-lg fixed-top navbar-light' style='background:#dbdbdb')
             a(class='navbar-brand' href='/') BabbleSmash
             button(class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarToggle' aria-controls='navbarToggle' aria-expanded='false' aria-label='Toggle navigation')
                 span(class='navbar-toggler-icon')
@@ -11,7 +11,7 @@ header
                     li(class='nav-item active')
                         a(class='nav-link' href='/edit') Edit profile
                     li(class='nav-item')
-                        a(class='nav-link' href='/logout') Logout #{user.name}
+                        a(class='nav-link' href='/logout') Logout 
             form(action='/results' method='POST' class='form-inline my-2 my-lg-0')
                 input(type='url' name='url' id='usrURL' class='form-control mr-sm-2' placeholder='Smash New URL' aria-label='Search')
                 button(class='btn btn-outline-success my-2 my-sm-0' type='submit') Smash
