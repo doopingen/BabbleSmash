@@ -7,7 +7,6 @@ const axios = require('axios');
 const qs = require('querystring')
 
 const YONDER_URL = 'https://api.yonderlabs.com/1.0/text/allsingletext/fromURL?access_token=';
-const testUrl = 'url=https%3A%2F%2Fnewrepublic.com%2Farticle%2F155292%2Fbetsy-devos-cost-trump-election'
 const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
 
 
