@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const helmet = require('helmet');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const RateLimit = require('express-rate-limit');
+const methodOverride = require('method-override');
 
 //Set Database models
 const db = require('./models');
@@ -26,6 +27,7 @@ app.use(express.static('public'));
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
+app.use(methodOverride('_method'))
 
 //Rate limiters for login and signup
 const loginLimiter = new RateLimit({

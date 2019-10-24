@@ -113,10 +113,10 @@ router.post('/signup', function(req, res) {
 router.delete('/profile/:id', function(req, res) {
   db.article.destroy({
     where: {
-        name: req.params.id
+        id: req.params.id
     }
   }).then(function(){
-    res.redirect('profile')
+    res.redirect('/profile')
   })
 })
 
